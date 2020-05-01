@@ -31,7 +31,7 @@ var userRouter = require('./routes/userRoutes.js');
 
 var reviewRouter = require('./routes/reviewRoutes.js');
 
-var viewRouter = require('./routes/viewRoutes.js'); // Start Express application
+var viewRouter = require('./routes/viewRoutes.js'); // Start Express app
 
 
 var app = express();

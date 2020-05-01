@@ -18,6 +18,8 @@ var hpp = require('hpp');
 
 var cookieParser = require('cookie-parser');
 
+var compression = require('compression');
+
 var AppError = require('./utils/appError');
 
 var globalErrorHandler = require('./controller/errorController'); // Routers
@@ -29,7 +31,8 @@ var userRouter = require('./routes/userRoutes.js');
 
 var reviewRouter = require('./routes/reviewRoutes.js');
 
-var viewRouter = require('./routes/viewRoutes.js');
+var viewRouter = require('./routes/viewRoutes.js'); // Start Express application
+
 
 var app = express();
 app.set('view engine', 'pug');
@@ -74,6 +77,7 @@ app.use(xss()); // HPP Prevention
 app.use(hpp({
   whitelist: ['duration', 'ratingsQuantity', 'ratingsAverage', 'maxGroupSize', 'difficulty', 'price']
 }));
+app.use(compression());
 app.all('*', function (req, res, next) {
   //  const err = new Error(`Can't find ${req.originalUrl} on the server`);
   //   err.status = 'fail';

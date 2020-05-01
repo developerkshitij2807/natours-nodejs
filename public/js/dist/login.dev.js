@@ -22,7 +22,7 @@ var login = function login(email, password) {
           _context.next = 3;
           return regeneratorRuntime.awrap((0, _axios["default"])({
             method: 'POST',
-            url: 'http://127.0.0.1:3000/api/v1/users/login',
+            url: '/api/v1/users/login',
             data: {
               email: email,
               password: password
@@ -67,7 +67,7 @@ var logout = function logout() {
           _context2.next = 3;
           return regeneratorRuntime.awrap((0, _axios["default"])({
             method: 'GET',
-            url: 'http://127.0.0.1:3000/api/v1/users/logout'
+            url: '/api/v1/users/logout'
           }));
 
         case 3:

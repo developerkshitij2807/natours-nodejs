@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const AppError = require('./utils/appError');
 const globalErrorHandler = require('./controller/errorController');
@@ -17,6 +18,7 @@ const userRouter = require('./routes/userRoutes.js');
 const reviewRouter = require('./routes/reviewRoutes.js');
 const viewRouter = require('./routes/viewRoutes.js');
 
+// Start Express application
 const app = express();
 
 app.set('view engine', 'pug');
@@ -80,6 +82,7 @@ app.use(
   })
 );
 
+app.use(compression());
 app.all('*', (req, res, next) => {
   //  const err = new Error(`Can't find ${req.originalUrl} on the server`);
   //   err.status = 'fail';

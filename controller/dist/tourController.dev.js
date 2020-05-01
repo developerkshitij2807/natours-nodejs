@@ -49,28 +49,26 @@ exports.resizeTourImages = catchAsync(function _callee2(req, res, next) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          console.log(req.files);
-
           if (!(!req.files.imageCover || !req.files.images)) {
-            _context2.next = 3;
+            _context2.next = 2;
             break;
           }
 
           return _context2.abrupt("return", next());
 
-        case 3:
+        case 2:
           // 1) Cover Image
           imageCoverFilename = "tours-".concat(req.params.id, "-").concat(Date.now(), "-cover.jpeg");
-          _context2.next = 6;
+          _context2.next = 5;
           return regeneratorRuntime.awrap(sharp(req.file.imageCover[0].buffer).resize(2000, 1333).toFormat('jpeg').jpeg({
             quality: 90
           }).toFile("public/img/tours/".concat(imageCoverFilename)));
 
-        case 6:
+        case 5:
           req.body.imageCover = imageCoverFilename; // 2) Images
 
           req.body.images = [];
-          _context2.next = 10;
+          _context2.next = 9;
           return regeneratorRuntime.awrap(Promise.all(req.files.images.map(function _callee(file, i) {
             var filename;
             return regeneratorRuntime.async(function _callee$(_context) {
@@ -94,10 +92,10 @@ exports.resizeTourImages = catchAsync(function _callee2(req, res, next) {
             });
           })));
 
-        case 10:
+        case 9:
           next();
 
-        case 11:
+        case 10:
         case "end":
           return _context2.stop();
       }
